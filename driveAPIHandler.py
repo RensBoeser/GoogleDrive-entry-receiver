@@ -21,9 +21,7 @@ class DriveService:
 		# Return an authorized service object
 		return build('drive', 'v3', http=self.Credentials.authorize(Http()))
 
-	def GetFile(self, fileId, fileType, fileDestination='file.txt', filePath=''):
-		if filePath == '':
-			filePath = self._libpath
+	def GetFile(self, fileId, fileType, fileDestination='file.txt'):
 		# Get authorized service
 		service = self.GetService()
 
@@ -39,7 +37,7 @@ class DriveService:
 			print("Downloading file: {0}".format(fileId))
 		
 		# Write file
-		with io.open(filePath + fileDestination, 'wb') as f:
+		with io.open(fileDestination, 'wb') as f:
 			fh.seek(0)
 			f.write(fh.read())
 			print('Downloaded file: {0} => {1}'.format(fileId, fileDestination))

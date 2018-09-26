@@ -6,11 +6,11 @@ def GetHardwareEntries(libpath):
 	print(libpath)
 	fileId = '1AVZwyLwWoGhELpZ5hwOA3FQ_NxxKq40I4csJ8F4neYs'
 	fileType = 'text/csv'
-	fileDestination = '../GoogleDrive-entry-receiver/entries.csv'
+	fileDestination = 'entries.csv'
 
 	# Download file
 	service = DriveService(libpath)
-	service.GetFile(fileId, fileType, '../' + fileDestination)
+	service.GetFile(fileId, fileType, fileDestination)
 	result = "{\n\t\"entries\": [\n\t\t"
 	with open(fileDestination, 'r') as csvfile:
 		reader = csv.DictReader(csvfile)
