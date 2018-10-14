@@ -3,7 +3,6 @@ import os, csv, json
 
 def GetHardwareEntries(libpath):
 	# Designate entries file
-	print(libpath)
 	fileId = '1AVZwyLwWoGhELpZ5hwOA3FQ_NxxKq40I4csJ8F4neYs'
 	fileType = 'text/csv'
 	fileDestination = 'entries.csv'

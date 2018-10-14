@@ -1,4 +1,4 @@
-from __future__ import print_function
+import time
 from apiclient.discovery import build
 from httplib2 import Http
 from oauth2client import file, client, tools
@@ -32,12 +32,13 @@ class DriveService:
 		fh = io.BytesIO()
 		downloader = MediaIoBaseDownload(fh, request)
 		done = False
+		start = time.time()
 		while done is False:
 			status, done = downloader.next_chunk()
-			print("Downloading file: {0}".format(fileId))
 		
 		# Write file
 		with io.open(fileDestination, 'wb') as f:
 			fh.seek(0)
 			f.write(fh.read())
-			print('Downloaded file: {0} => {1}'.format(fileId, fileDestination))
+			end = time.time()
+			print("[{0}ms] Download complete | {1}".format(int((end - start) * 1000), fileId))
